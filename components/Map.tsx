@@ -1,5 +1,4 @@
 import Head from "next/head";
-import Script from "next/script";
 import { useState, useRef, useEffect } from "react";
 import styled from "styled-components";
 
@@ -115,15 +114,16 @@ const CancelButton = styled(StyledButton)`
 `;
 
 const Map = () => {
-  const mapRef = useRef<HTMLDivElement | null>(null);
-  const inputRef = useRef<HTMLInputElement | null>(null);
-  const [map, setMap] = useState<google.maps.Map | null>(null);
+  const mapRef = useRef<HTMLDivElement>(null);
+  const [map, setMap] = useState<google.maps.Map>();
+
+  // Search for a place
+  const inputRef = useRef<HTMLInputElement>(null);
   const [searchInputElem, setSearchInputElem] =
-    useState<google.maps.places.Autocomplete | null>(null);
+    useState<google.maps.places.Autocomplete>();
   const [newLoc, setNewLoc] =
     useState<google.maps.places.PlaceResult | null>(null);
   const [savedPlaces, setSavedPlaces] = useState<string[] | null>(null);
-
   useEffect(() => {
     let result = window.localStorage.getItem("savedPlaces");
     if (result !== null && result !== "undefined") {
@@ -134,7 +134,6 @@ const Map = () => {
       setSavedPlaces(null);
     }
   }, []);
-
   useEffect(() => {
     if (savedPlaces !== null) {
       window.localStorage.setItem(
@@ -166,8 +165,8 @@ const Map = () => {
           position.coords.latitude,
           position.coords.longitude,
         ]);
-        const marker = new google.maps.Marker({
-          position: new google.maps.LatLng(
+        const marker = new window.google.maps.Marker({
+          position: new window.google.maps.LatLng(
             position.coords.latitude,
             position.coords.longitude
           ),
@@ -306,11 +305,7 @@ const Map = () => {
           <p>Look up a new place!</p>
         )}
       </SectionControlsDiv>
-      <MapDiv ref={mapRef}></MapDiv>
-      <Script
-        async
-        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBInO-dLpR-7kh_XEWnrgwH6nfdkaO21Fc&libraries=places&callback=initMap"
-      ></Script>
+      <MapDiv ref={mapRef} />
     </PageWrapper>
   );
 };
