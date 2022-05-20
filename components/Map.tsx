@@ -1,3 +1,4 @@
+import React from "react";
 import Head from "next/head";
 import { useState, useRef, useEffect } from "react";
 import styled from "styled-components";
@@ -9,11 +10,12 @@ const PageWrapper = styled.div`
 `;
 
 const MapDiv = styled.div`
-  height: 80vh;
-  width: 40vw;
+  height: 90vh;
+  width: 50vw;
   margin-block: 5vh;
-  margin-inline: auto;
+  margin-inline: 5vw;
   border-radius: 20px;
+  position: fixed;
 `;
 
 const SectionControlsDiv = styled.div`
@@ -21,6 +23,7 @@ const SectionControlsDiv = styled.div`
   flex-direction: column;
   align-items: center;
   width: 50%;
+  overflow-y: auto;
 `;
 
 const ControlGrouping = styled.div`
@@ -32,6 +35,7 @@ const ControlLabel = styled.label`
   font-size: 1.8rem;
   font-weight: 600;
   text-align: center;
+  color: #fefefe;
 `;
 
 const StyledInput = styled.input`
@@ -49,16 +53,18 @@ const NewLocTitle = styled.h3`
   font-size: 3rem;
   font-weight: 400;
   text-transform: uppercase;
-  color: yellow;
+  color: #ffd30f;
   margin-bottom: 1rem;
 `;
 const NewLocAddress = styled.p`
   font-size: 1.4rem;
   margin-bottom: 0.8rem;
+  color: #fefefe;
 `;
 const NewLocPhone = styled.p`
   font-size: 1.4rem;
   margin-bottom: 1.8rem;
+  color: #fefefe;
 `;
 
 const WebLink = styled.a`
@@ -113,7 +119,7 @@ const CancelButton = styled(StyledButton)`
   background-color: red;
 `;
 
-const Map = () => {
+const Map: React.FC = () => {
   const mapRef = useRef<HTMLDivElement>(null);
   const [map, setMap] = useState<google.maps.Map>();
 
@@ -240,6 +246,7 @@ const Map = () => {
 
   return (
     <PageWrapper>
+      <MapDiv ref={mapRef} />
       <SectionControlsDiv>
         <p>{currCoords}</p>
         <ControlGrouping>
@@ -305,7 +312,6 @@ const Map = () => {
           <p>Look up a new place!</p>
         )}
       </SectionControlsDiv>
-      <MapDiv ref={mapRef} />
     </PageWrapper>
   );
 };
