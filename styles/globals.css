@@ -5,12 +5,46 @@ body {
   /* font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif; */
   font-family: "Heebo", sans-serif;
+  font-size: 62.5%;
   color: #efefef;
+}
+
+:root {
+  --color-text-light: #efefef;
+  --color-text-dark: #161616;
+
+  --color-success-green: #4bb543;
+  --color-warning-yellow: #eed202;
+  --color-failure-red: #fc100d;
+  --color-bright-blue: #379af1;
+}
+
+h1 {
+  font-size: 3.5rem;
+  font-weight: 600;
+}
+
+h2 {
+  font-size: 2.5rem;
+}
+
+h3 {
+  font-size: 2rem;
+}
+
+p {
+  font-size: 1.6rem;
 }
 
 a {
   color: inherit;
   text-decoration: none;
+  font-size: 1.6rem;
+  transition: color 0.15s;
+}
+
+a:hover {
+  cursor: pointer;
 }
 
 * {

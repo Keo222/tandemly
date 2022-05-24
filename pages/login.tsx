@@ -21,7 +21,12 @@ const login = (props: Props) => {
   return (
     <div>
       <Formik
-        initialValues={{ firstName: "", lastName: "", email: "", password: "" }}
+        initialValues={{
+          firstName: "",
+          lastName: "",
+          email: "",
+          password: "",
+        }}
         validationSchema={Yup.object({
           firstName: Yup.string()
             .required("Required")
@@ -29,7 +34,9 @@ const login = (props: Props) => {
           lastName: Yup.string()
             .required("Required")
             .max(12, "Last name must be 12 characters or less"),
-          email: Yup.string().required("Required").email("Not a vaild email"),
+          email: Yup.string()
+            .required("Required")
+            .email("Not a vaild email"),
           password: Yup.string()
             .required("Required")
             .matches(

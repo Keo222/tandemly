@@ -1,5 +1,6 @@
 import React from "react";
 import { useState, useRef, useEffect } from "react";
+import { useRouter } from "next/router";
 import styled from "styled-components";
 
 // Styled Components
@@ -36,7 +37,6 @@ const ControlLabel = styled.label`
   font-size: 1.8rem;
   font-weight: 600;
   text-align: center;
-  color: #fefefe;
 `;
 
 const StyledInput = styled.input`
@@ -60,16 +60,14 @@ const NewLocTitle = styled.h3`
 const NewLocAddress = styled.p`
   font-size: 1.4rem;
   margin-bottom: 0.8rem;
-  color: #fefefe;
 `;
 const NewLocPhone = styled.p`
   font-size: 1.4rem;
   margin-bottom: 1.8rem;
-  color: #fefefe;
 `;
 
 const WebLink = styled.a`
-  color: greenyellow;
+  color: #8ad120;
   font-size: 1.4rem;
   text-decoration: none;
   margin-bottom: 1.2rem;
@@ -128,9 +126,8 @@ const Map: React.FC = () => {
   const inputRef = useRef<HTMLInputElement>(null);
   const [searchInputElem, setSearchInputElem] =
     useState<google.maps.places.Autocomplete>();
-  const [newLoc, setNewLoc] = useState<google.maps.places.PlaceResult | null>(
-    null
-  );
+  const [newLoc, setNewLoc] =
+    useState<google.maps.places.PlaceResult | null>(null);
   const [savedPlaces, setSavedPlaces] = useState<string[] | null>(null);
   useEffect(() => {
     let result = window.localStorage.getItem("savedPlaces");
@@ -143,7 +140,10 @@ const Map: React.FC = () => {
   }, []);
   useEffect(() => {
     if (savedPlaces !== null) {
-      window.localStorage.setItem("savedPlaces", JSON.stringify(savedPlaces));
+      window.localStorage.setItem(
+        "savedPlaces",
+        JSON.stringify(savedPlaces)
+      );
     }
   }, [savedPlaces]);
 
@@ -165,7 +165,10 @@ const Map: React.FC = () => {
   useEffect(() => {
     if ("geolocation" in navigator) {
       navigator.geolocation.getCurrentPosition((position) => {
-        setCurrCoords([position.coords.latitude, position.coords.longitude]);
+        setCurrCoords([
+          position.coords.latitude,
+          position.coords.longitude,
+        ]);
         const marker = new window.google.maps.Marker({
           position: new window.google.maps.LatLng(
             position.coords.latitude,
@@ -226,15 +229,20 @@ const Map: React.FC = () => {
     });
   }
 
+  const router = useRouter();
+
   const addPlace = (placeItem: string | undefined) => {
     if (placeItem === undefined) {
       console.error("ID is undefined");
       return;
-    }
-    if (savedPlaces === null || savedPlaces === undefined) {
+    } else if (savedPlaces === null || savedPlaces === undefined) {
       setSavedPlaces([placeItem]);
+      router.push("/places");
+    } else if (savedPlaces.includes(placeItem)) {
+      alert("This place is already on your list!");
     } else {
       setSavedPlaces([...savedPlaces, placeItem]);
+      router.push("/places");
     }
   };
 

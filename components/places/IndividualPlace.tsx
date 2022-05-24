@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import Image from "next/image";
+import { getDay } from "date-fns";
 
 // Image Import
 import catPic from "../../public/tempImgs/square_cat.jpeg";
@@ -42,6 +43,37 @@ const PlaceHeading = styled.h3`
 
 const PlaceBody = styled.div`
   flex-basis: 70%;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  padding-inline: 1.6rem;
+`;
+
+const IsOpen = styled.p`
+  margin-block: auto;
+  margin-right: auto;
+`;
+
+const OpenNow = styled(IsOpen)`
+  color: var(--color-success-green);
+`;
+const ClosedNow = styled(IsOpen)`
+  color: var(--color-failure-red);
+`;
+const UnknownNow = styled(IsOpen)`
+  color: var(--color-warning-yellow);
+`;
+
+const SiteLink = styled.a`
+  margin: auto;
+
+  &:hover {
+    color: var(--color-bright-blue);
+  }
+`;
+
+const DirectionsLink = styled.a`
+  margin-block: auto;
+  margin-left: auto;
 `;
 
 type Props = { id: string; gMap: google.maps.Map | undefined };
@@ -50,29 +82,42 @@ const IndividualPlace = ({ id, gMap }: Props) => {
   const [placeDetails, setPlaceDetails] =
     useState<google.maps.places.PlaceResult | null>(null);
   const [imgUrl, setImgUrl] = useState<string | undefined>();
+  const [openHoursText, setOpenHoursText] = useState<string>();
+  const [placeOpen, setPlaceOpen] = useState<boolean>();
 
   useEffect(() => {
     if (gMap) {
-      const service = new window.google.maps.places.PlacesService(
-        gMap
-      ).getDetails({ placeId: id }, function (place, status) {
-        if (status === google.maps.places.PlacesServiceStatus.OK) {
-          if (place) {
-            setPlaceDetails(place);
-            if (place.photos !== undefined) {
-              const url = place.photos[0].getUrl({
-                maxWidth: 1000,
-                maxHeight: 1000,
-              });
-              setImgUrl(url);
+      new window.google.maps.places.PlacesService(gMap).getDetails(
+        { placeId: id },
+        function (place, status) {
+          if (status === google.maps.places.PlacesServiceStatus.OK) {
+            if (place) {
+              // console.log(place);
+              setPlaceDetails(place);
+              if (place.photos !== undefined) {
+                const url = place.photos[0].getUrl({
+                  maxWidth: 1000,
+                  maxHeight: 1000,
+                });
+                setImgUrl(url);
+              }
+              if (place.opening_hours !== undefined) {
+                if (place.opening_hours.weekday_text !== undefined) {
+                  const today = new Date();
+                  const day = getDay(today);
+                  setOpenHoursText(place.opening_hours.weekday_text[0]);
+                }
+                const open = place.opening_hours.isOpen();
+                setPlaceOpen(open);
+              }
+            } else {
+              console.log("Could not find details for:", id);
             }
-          } else {
-            console.log("Could not find details for:", id);
           }
         }
-      });
+      );
     }
-  }, []);
+  }, [gMap, id]);
 
   return (
     <PlaceDiv>
@@ -82,18 +127,41 @@ const IndividualPlace = ({ id, gMap }: Props) => {
           layout="responsive"
           width={768}
           height={768}
+          alt={`Google photo for ${placeDetails?.name}`}
         />
       </ImgContainer>
       <InfoDiv>
         <PlaceHeading>{placeDetails?.name}</PlaceHeading>
         <PlaceBody>
-          <a
+          {/* <PlaceHours>
+            {openHoursText ? openHoursText : "Not Available"}
+          </PlaceHours> */}
+          {placeOpen === undefined ? (
+            <UnknownNow>Not Available</UnknownNow>
+          ) : placeOpen ? (
+            <OpenNow>Open</OpenNow>
+          ) : (
+            <ClosedNow>Closed</ClosedNow>
+          )}
+          <SiteLink
+            href={placeDetails?.website}
+            rel="noopenner noreferrer"
+            target="_blank"
+          >
+            Website
+          </SiteLink>
+          <DirectionsLink
             target="_blank"
             rel="noopener noreferrer"
             href={`https://www.google.com/maps/place/?q=place_id:${id}`}
           >
-            <Image src={gMapsLogo} height={50} width={50} />
-          </a>
+            <Image
+              src={gMapsLogo}
+              height={50}
+              width={50}
+              alt="Google Maps logo"
+            />
+          </DirectionsLink>
         </PlaceBody>
       </InfoDiv>
     </PlaceDiv>

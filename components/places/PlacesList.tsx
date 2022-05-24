@@ -21,6 +21,10 @@ const BackgroundMap = styled.div`
   width: 100%;
 `;
 
+const NoPlaces = styled.p`
+  text-align: center;
+`;
+
 type Props = {};
 
 const PlacesList = (props: Props) => {
@@ -42,26 +46,27 @@ const PlacesList = (props: Props) => {
 
   useEffect(() => {
     const storedPlaces = localStorage.getItem("savedPlaces");
-    let newPlaceDetails: google.maps.places.PlaceResult[] = [];
-    if (backgroundMap && storedPlaces) {
-      JSON.parse(storedPlaces).forEach((pId: string) => {
-        new window.google.maps.places.PlacesService(backgroundMap).getDetails(
-          { placeId: pId },
-          function (place, status) {
-            if (status === google.maps.places.PlacesServiceStatus.OK) {
-              if (place) {
-                newPlaceDetails.push(place);
-              } else {
-                console.log("Could not find details for:", pId);
-              }
-            }
-          }
-        );
-      });
-    }
+    // let newPlaceDetails: google.maps.places.PlaceResult[] = [];
+    // if (backgroundMap && storedPlaces) {
+    //   JSON.parse(storedPlaces).forEach((pId: string) => {
+    //     new window.google.maps.places.PlacesService(backgroundMap).getDetails(
+    //       { placeId: pId },
+    //       function (place, status) {
+    //         if (status === google.maps.places.PlacesServiceStatus.OK) {
+    //           if (place) {
+    //             newPlaceDetails.push(place);
+    //           } else {
+    //             console.log("Could not find details for:", pId);
+    //           }
+    //         }
+    //       }
+    //     );
+    //   });
+    // }
     if (typeof storedPlaces === "string") {
       setPlacesInfo(JSON.parse(storedPlaces));
     }
+    console.log(storedPlaces);
   }, [backgroundMap]);
 
   return (
@@ -69,9 +74,13 @@ const PlacesList = (props: Props) => {
       <MapContainer>
         <BackgroundMap ref={backgroundMapRef} />
       </MapContainer>
-      {placesInfo?.map((p, i) => (
-        <IndividualPlace key={i + p} id={p} gMap={backgroundMap} />
-      ))}
+      {placesInfo ? (
+        placesInfo?.map((p, i) => (
+          <IndividualPlace key={i + p} id={p} gMap={backgroundMap} />
+        ))
+      ) : (
+        <NoPlaces>Add a place to view it here!</NoPlaces>
+      )}
     </>
   );
 };
