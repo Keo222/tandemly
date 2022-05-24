@@ -1,5 +1,4 @@
 import React from "react";
-import Head from "next/head";
 import { useState, useRef, useEffect } from "react";
 import styled from "styled-components";
 
@@ -13,7 +12,7 @@ const MapDiv = styled.div`
   height: 90vh;
   width: 50vw;
   margin-block: 5vh;
-  margin-inline: 5vw;
+  margin-inline: 2vw;
   border-radius: 20px;
   position: fixed;
 `;
@@ -23,6 +22,8 @@ const SectionControlsDiv = styled.div`
   flex-direction: column;
   align-items: center;
   width: 50%;
+  height: 100vh;
+  margin-inline: 2vw;
   overflow-y: auto;
 `;
 
@@ -127,13 +128,13 @@ const Map: React.FC = () => {
   const inputRef = useRef<HTMLInputElement>(null);
   const [searchInputElem, setSearchInputElem] =
     useState<google.maps.places.Autocomplete>();
-  const [newLoc, setNewLoc] =
-    useState<google.maps.places.PlaceResult | null>(null);
+  const [newLoc, setNewLoc] = useState<google.maps.places.PlaceResult | null>(
+    null
+  );
   const [savedPlaces, setSavedPlaces] = useState<string[] | null>(null);
   useEffect(() => {
     let result = window.localStorage.getItem("savedPlaces");
     if (result !== null && result !== "undefined") {
-      console.log(result === "undefined");
       const newResult = JSON.parse(result);
       setSavedPlaces(newResult);
     } else {
@@ -142,10 +143,7 @@ const Map: React.FC = () => {
   }, []);
   useEffect(() => {
     if (savedPlaces !== null) {
-      window.localStorage.setItem(
-        "savedPlaces",
-        JSON.stringify(savedPlaces)
-      );
+      window.localStorage.setItem("savedPlaces", JSON.stringify(savedPlaces));
     }
   }, [savedPlaces]);
 
@@ -167,10 +165,7 @@ const Map: React.FC = () => {
   useEffect(() => {
     if ("geolocation" in navigator) {
       navigator.geolocation.getCurrentPosition((position) => {
-        setCurrCoords([
-          position.coords.latitude,
-          position.coords.longitude,
-        ]);
+        setCurrCoords([position.coords.latitude, position.coords.longitude]);
         const marker = new window.google.maps.Marker({
           position: new window.google.maps.LatLng(
             position.coords.latitude,
@@ -211,7 +206,6 @@ const Map: React.FC = () => {
       const place = searchInputElem.getPlace();
 
       if (place && map) {
-        console.table(place);
         if (place.geometry) {
           if (place.geometry.viewport) {
             map.fitBounds(place.geometry.viewport);
