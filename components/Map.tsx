@@ -4,16 +4,18 @@ import { useRouter } from "next/router";
 import styled from "styled-components";
 
 // Styled Components
+import { GreyBackground } from "../styles/styledComponents/BackgroundDiv";
 
 const PageWrapper = styled.div`
   display: flex;
+  margin: 3vh 3vw;
 `;
 
 const MapDiv = styled.div`
-  height: 90vh;
+  height: 94vh;
   width: 50vw;
-  margin-block: 5vh;
-  margin-inline: 2vw;
+  /* margin-block: 5vh;
+  margin-inline: 2vw; */
   border-radius: 20px;
   position: fixed;
 `;
@@ -248,9 +250,9 @@ const Map: React.FC = () => {
 
   return (
     <PageWrapper>
+      <GreyBackground />
       <MapDiv ref={mapRef} />
       <SectionControlsDiv>
-        <p>{currCoords}</p>
         <ControlGrouping>
           <ControlLabel htmlFor="searchInput">Search:</ControlLabel>
           <StyledInput

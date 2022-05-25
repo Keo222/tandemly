@@ -18,7 +18,7 @@ const PlaceDiv = styled.div`
   border: 2px solid #efefef;
   border-radius: 8px;
   display: flex;
-  background-color: #2b303a;
+  background-color: var(--color-dark-grey);
 `;
 
 const ImgContainer = styled.div`

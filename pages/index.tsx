@@ -4,20 +4,22 @@ import Link from "next/link";
 import styled from "styled-components";
 
 // STYLED COMPONENTS
+import { GreyBackground } from "../styles/styledComponents/BackgroundDiv";
 const PageHeader = styled.h1`
   text-align: center;
 `;
 
-const LinkContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  min-height: 50vh;
-`;
+// const LinkContainer = styled.div`
+//   display: flex;
+//   flex-direction: column;
+//   justify-content: space-around;
+//   min-height: 50vh;
+// `;
 
 const LinkList = styled.div`
-  display: flex;
-  justify-content: space-around;
+  height: 60vh;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
 `;
 
 const StyledLink = styled.a`
@@ -26,7 +28,11 @@ const StyledLink = styled.a`
   border: 2px solid green;
   border-radius: 10px;
   transition: all 0.3s;
+  block-size: fit-content;
   cursor: pointer;
+  width: fit-content;
+  height: fit-content;
+  margin: auto;
 
   &:hover {
     color: green;
@@ -45,20 +51,22 @@ const Home: NextPage = () => {
         />
         <link rel="icon" href="/favicon.ico" />
       </Head>
+      <GreyBackground />
       <PageHeader>Tandemly</PageHeader>
-      <LinkContainer>
-        <LinkList>
-          <Link href="/places">
-            <StyledLink>Places</StyledLink>
-          </Link>
-          <Link href="/test">
-            <StyledLink>Test</StyledLink>
-          </Link>
-          <Link href="/login">
-            <StyledLink>Login</StyledLink>
-          </Link>
-        </LinkList>
-      </LinkContainer>
+      <LinkList>
+        <Link href="/places">
+          <StyledLink>Places</StyledLink>
+        </Link>
+        <Link href="/map">
+          <StyledLink>Map</StyledLink>
+        </Link>
+        <Link href="/login">
+          <StyledLink>Login</StyledLink>
+        </Link>
+        <Link href="/movies">
+          <StyledLink>Movies</StyledLink>
+        </Link>
+      </LinkList>
     </div>
   );
 };

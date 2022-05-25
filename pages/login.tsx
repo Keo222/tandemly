@@ -1,6 +1,7 @@
 import React from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
+import Layout from "../components/layout";
 import styled from "styled-components";
 
 // Styled Components
@@ -8,6 +9,8 @@ const FormOrganization = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-around;
+  width: clamp(200px, 60vw, 1000px);
+  margin-inline: auto;
 `;
 
 const StyledTextInput = styled.input`
@@ -19,7 +22,7 @@ type Props = {};
 
 const login = (props: Props) => {
   return (
-    <div>
+    <Layout title="Login" btnDestination="">
       <Formik
         initialValues={{
           firstName: "",
@@ -76,7 +79,7 @@ const login = (props: Props) => {
           </FormOrganization>
         </Form>
       </Formik>
-    </div>
+    </Layout>
   );
 };
 
