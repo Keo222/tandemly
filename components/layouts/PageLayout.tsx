@@ -3,7 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import styled from "styled-components";
 
-import { GreyBackground } from "../styles/styledComponents/BackgroundDiv";
+import { GreyBackground } from "../../styles/styledComponents/BackgroundDiv";
 
 const TopBar = styled.nav`
   padding: 4rem 4rem 2rem;

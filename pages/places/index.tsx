@@ -4,7 +4,7 @@ import Link from "next/link";
 import styled from "styled-components";
 
 // Components
-import PlacesList from "../../components/places/PlacesList";
+import PlacesList from "../../components/placesPage/PlacesList";
 
 // Styled Components
 const TopBar = styled.div`

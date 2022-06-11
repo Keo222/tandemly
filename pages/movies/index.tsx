@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 
 // Components
-import TMDBDisclosure from "../../components/movies/TMDBDisclosure";
+import TMDBDisclosure from "../../components/moviesPage/TMDBDisclosure";
 // StyledComponents
 import { GreyBackground } from "../../styles/styledComponents/BackgroundDiv";
 

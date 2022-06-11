@@ -1,7 +1,7 @@
 import React from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
-import Layout from "../components/layout";
+import Layout from "../components/layouts/PageLayout";
 import styled from "styled-components";
 
 // Styled Components

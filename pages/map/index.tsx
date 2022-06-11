@@ -1,6 +1,6 @@
 import React from "react";
 import type { NextPage } from "next";
-import Map from "../../components/Map";
+import Map from "../../components/mapPage/Map";
 
 type Props = {};
 
