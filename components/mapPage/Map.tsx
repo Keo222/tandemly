@@ -6,30 +6,6 @@ import styled from "styled-components";
 // Styled Components
 import { GreyBackground } from "../../styles/styledComponents/BackgroundDiv";
 
-const PageWrapper = styled.div`
-  display: flex;
-  margin: 3vh 3vw;
-`;
-
-const MapDiv = styled.div`
-  height: 94vh;
-  width: 50vw;
-  /* margin-block: 5vh;
-  margin-inline: 2vw; */
-  border-radius: 20px;
-  position: fixed;
-`;
-
-const SectionControlsDiv = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 50%;
-  height: 100vh;
-  margin-inline: 2vw;
-  overflow-y: auto;
-`;
-
 const ControlGrouping = styled.div`
   display: flex;
   flex-direction: column;
@@ -249,10 +225,10 @@ const Map: React.FC = () => {
   };
 
   return (
-    <PageWrapper>
+    <div className="flex my-3vh mx-3vw">
       <GreyBackground />
-      <MapDiv ref={mapRef} />
-      <SectionControlsDiv>
+      <div className="h-94vh w-50vw rounded-3xl fixed" ref={mapRef} />
+      <div className="flex flex-col items-center w-1/2 h-screen mx-2vw overflow-y-hidden">
         <ControlGrouping>
           <ControlLabel htmlFor="searchInput">Search:</ControlLabel>
           <StyledInput
@@ -315,8 +291,8 @@ const Map: React.FC = () => {
         ) : (
           <p>Look up a new place!</p>
         )}
-      </SectionControlsDiv>
-    </PageWrapper>
+      </div>
+    </div>
   );
 };
 

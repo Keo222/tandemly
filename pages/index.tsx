@@ -1,20 +1,12 @@
 import type { NextPage } from "next";
 import Head from "next/head";
-import Link from "next/link";
 import styled from "styled-components";
+
+// COMPONENTS
+import { LinkButton } from "../components/generic/Buttons";
 
 // STYLED COMPONENTS
 import { GreyBackground } from "../styles/styledComponents/BackgroundDiv";
-const PageHeader = styled.h1`
-  text-align: center;
-`;
-
-// const LinkContainer = styled.div`
-//   display: flex;
-//   flex-direction: column;
-//   justify-content: space-around;
-//   min-height: 50vh;
-// `;
 
 const LinkList = styled.div`
   height: 60vh;
@@ -28,10 +20,10 @@ const StyledLink = styled.a`
   border: 2px solid green;
   border-radius: 10px;
   transition: all 0.3s;
-  block-size: fit-content;
+  /* block-size: fit-content; */
   cursor: pointer;
-  width: fit-content;
-  height: fit-content;
+  /* width: fit-content;
+  height: fit-content; */
   margin: auto;
 
   &:hover {
@@ -52,20 +44,12 @@ const Home: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <GreyBackground />
-      <PageHeader>Tandemly</PageHeader>
+      <h1 className="text-center">Tandemly</h1>
       <LinkList>
-        <Link href="/places">
-          <StyledLink>Places</StyledLink>
-        </Link>
-        <Link href="/map">
-          <StyledLink>Map</StyledLink>
-        </Link>
-        <Link href="/login">
-          <StyledLink>Login</StyledLink>
-        </Link>
-        <Link href="/movies">
-          <StyledLink>Movies</StyledLink>
-        </Link>
+        <LinkButton text="Places" url="/places" />
+        <LinkButton text="Map" url="/map" />
+        <LinkButton text="Login" url="/login" />
+        <LinkButton text="Movies" url="/movies" />
       </LinkList>
     </div>
   );

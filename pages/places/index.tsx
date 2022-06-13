@@ -1,55 +1,22 @@
 import React from "react";
 import { NextPage } from "next";
-import Link from "next/link";
-import styled from "styled-components";
 
 // Components
+import { SmLinkButton } from "../../components/generic/Buttons";
 import PlacesList from "../../components/placesPage/PlacesList";
+import PageLayout from "components/layouts/PageLayout";
 
-// Styled Components
-const TopBar = styled.div`
-  padding: 4rem 4rem 2rem;
-  width: 100%;
-  display: flex;
-  color: var(--color-text-light);
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  justify-content: center;
-`;
-
-const TitleHeader = styled.h1`
-  margin: auto;
-  font-size: 4rem;
-  font-weight: 400;
-  letter-spacing: 0.4em;
-  grid-column: 2;
-`;
-
-const AddPlaceBtn = styled.a`
-  margin-block: auto;
-  margin-left: auto;
-  padding: 0.8rem 1.6rem;
-  border-radius: 15px;
-  background-color: var(--color-success-green);
-
-  color: var(--color-text-dark);
-  font-size: 1.6rem;
-  font-weight: 500;
-`;
-
-type Props = {};
-
-const Places: NextPage = (props: Props) => {
+const Places: NextPage = () => {
   return (
-    <>
-      <TopBar>
-        <TitleHeader>Places</TitleHeader>
-        <Link href="/test">
-          <AddPlaceBtn>Add Place</AddPlaceBtn>
-        </Link>
-      </TopBar>
+    <PageLayout>
+      <div className="px-16 pt-16 pb-8 w-full text-neutral-50 grid grid-cols-6 justify-center">
+        <h1 className="m-auto text-6.5xl font-normal tracking-4 col-start-2 col-span-4">
+          Places
+        </h1>
+        <SmLinkButton text="Add Place" url="/test" />
+      </div>
       <PlacesList />
-    </>
+    </PageLayout>
   );
 };
 
