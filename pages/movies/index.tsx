@@ -1,6 +1,8 @@
 import React from "react";
 import styled from "styled-components";
 
+// Layout
+import PageLayout from "@/components/layouts/PageLayout";
 // Components
 import TMDBDisclosure from "../../components/moviesPage/TMDBDisclosure";
 // StyledComponents
@@ -14,11 +16,11 @@ type Props = {};
 
 const MovieList = (props: Props) => {
   return (
-    <div>
+    <PageLayout>
       <GreyBackground />
       <MovieHeader>Movies</MovieHeader>
       <TMDBDisclosure />
-    </div>
+    </PageLayout>
   );
 };
 

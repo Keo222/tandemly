@@ -1,8 +1,11 @@
 import React from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
-import Layout from "../components/layouts/PageLayout";
 import styled from "styled-components";
+
+// Layout
+import PageLayout from "@/components/layouts/PageLayout";
+import { GreyBackground } from "styles/styledComponents/BackgroundDiv";
 
 // Styled Components
 const FormOrganization = styled.div`
@@ -22,7 +25,8 @@ type Props = {};
 
 const login = (props: Props) => {
   return (
-    <Layout title="Login" btnDestination="">
+    <PageLayout>
+      <GreyBackground />
       <Formik
         initialValues={{
           firstName: "",
@@ -79,7 +83,7 @@ const login = (props: Props) => {
           </FormOrganization>
         </Form>
       </Formik>
-    </Layout>
+    </PageLayout>
   );
 };
 

@@ -5,6 +5,8 @@ import styled from "styled-components";
 
 // Components
 import PlacesList from "../../components/placesPage/PlacesList";
+// Layout
+import PageLayout from "@/components/layouts/PageLayout";
 
 // Styled Components
 const TopBar = styled.div`
@@ -41,7 +43,7 @@ type Props = {};
 
 const Places: NextPage = (props: Props) => {
   return (
-    <>
+    <PageLayout>
       <TopBar>
         <TitleHeader>Places</TitleHeader>
         <Link href="/test">
@@ -49,7 +51,7 @@ const Places: NextPage = (props: Props) => {
         </Link>
       </TopBar>
       <PlacesList />
-    </>
+    </PageLayout>
   );
 };
 

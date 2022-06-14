@@ -1,3 +1,16 @@
+:root {
+  --color-text-light: #efefef;
+  --color-text-dark: #161616;
+  --color-highlight-1: #34d399;
+  --color-highlight-1-dark: #047857;
+
+  --color-success-green: #4bb543;
+  --color-warning-yellow: #eed202;
+  --color-failure-red: #fc100d;
+  --color-bright-blue: #379af1;
+  --color-dark-grey: #2b303a;
+}
+
 html,
 body {
   padding: 0;
@@ -7,17 +20,6 @@ body {
   font-family: "Heebo", sans-serif;
   font-size: 62.5%;
   color: #efefef;
-}
-
-:root {
-  --color-text-light: #efefef;
-  --color-text-dark: #161616;
-
-  --color-success-green: #4bb543;
-  --color-warning-yellow: #eed202;
-  --color-failure-red: #fc100d;
-  --color-bright-blue: #379af1;
-  --color-dark-grey: #2b303a;
 }
 
 h1 {
