@@ -204,7 +204,7 @@ const Map: React.FC = () => {
         })
       );
     }
-  }, []);
+  }, [setSearchInputElem, searchInputElem]);
 
   if (searchInputElem) {
     searchInputElem.addListener("place_changed", () => {

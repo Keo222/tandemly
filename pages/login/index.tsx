@@ -1,4 +1,5 @@
 import React from "react";
+import type { NextPage } from "next";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import styled from "styled-components";
@@ -7,6 +8,9 @@ import styled from "styled-components";
 import PageLayout from "@/components/layouts/PageLayout";
 import { GreyBackground } from "styles/styledComponents/BackgroundDiv";
 
+// Components
+import { SubmitButton } from "@/components/generic/buttons/FormButtons";
+
 // Styled Components
 const FormOrganization = styled.div`
   display: flex;
@@ -14,16 +18,22 @@ const FormOrganization = styled.div`
   justify-content: space-around;
   width: clamp(200px, 60vw, 1000px);
   margin-inline: auto;
+
+  & input:last-of-type {
+    margin-bottom: 3rem;
+  }
 `;
 
 const StyledTextInput = styled.input`
   width: 100%;
-  background-color: green;
+  border-radius: 5px;
+  border: 1px solid black;
+  margin-bottom: 1rem;
 `;
 
 type Props = {};
 
-const login = (props: Props) => {
+const LoginPage: NextPage = (props: Props) => {
   return (
     <PageLayout>
       <GreyBackground />
@@ -68,18 +78,18 @@ const login = (props: Props) => {
             <ErrorMessage name="firstName" />
 
             <label htmlFor="lastName">Last Name</label>
-            <Field name="lastName" type="text" />
+            <Field name="lastName" type="text" as={StyledTextInput} />
             <ErrorMessage name="lastName" />
 
             <label htmlFor="email">Email</label>
-            <Field name="email" type="email" />
+            <Field name="email" type="email" as={StyledTextInput} />
             <ErrorMessage name="email" />
 
             <label htmlFor="password">Password</label>
-            <Field name="password" type="password" />
+            <Field name="password" type="password" as={StyledTextInput} />
             <ErrorMessage name="password" />
 
-            <button type="submit">Submit</button>
+            <SubmitButton />
           </FormOrganization>
         </Form>
       </Formik>
@@ -87,4 +97,4 @@ const login = (props: Props) => {
   );
 };
 
-export default login;
+export default LoginPage;

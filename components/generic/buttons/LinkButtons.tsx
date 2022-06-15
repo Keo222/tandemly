@@ -4,7 +4,7 @@ import styled from "styled-components";
 
 // Styled Components
 const LinkBtn = styled.a`
-  padding: 0.8rem 1.5rem;
+  padding: 1rem 2rem;
   border: 2px solid var(--color-highlight-1);
   border-radius: 5px;
   block-size: fit-content;

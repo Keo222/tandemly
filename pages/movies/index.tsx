@@ -1,4 +1,5 @@
 import React from "react";
+import type { NextPage } from "next";
 import styled from "styled-components";
 
 // Layout
@@ -14,7 +15,7 @@ const MovieHeader = styled.h1`
 
 type Props = {};
 
-const MovieList = (props: Props) => {
+const MoviePage: NextPage = (props: Props) => {
   return (
     <PageLayout>
       <GreyBackground />
@@ -24,4 +25,4 @@ const MovieList = (props: Props) => {
   );
 };
 
-export default MovieList;
+export default MoviePage;

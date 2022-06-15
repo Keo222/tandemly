@@ -5,7 +5,7 @@ import Map from "../../components/mapPage/Map";
 // Layout
 import PageLayout from "@/components/layouts/PageLayout";
 
-const Test: NextPage = () => {
+const MapPage: NextPage = () => {
   return (
     <PageLayout>
       <Map />
@@ -13,4 +13,4 @@ const Test: NextPage = () => {
   );
 };
 
-export default Test;
+export default MapPage;

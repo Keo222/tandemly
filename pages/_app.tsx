@@ -8,7 +8,11 @@ function MyApp({ Component, pageProps }: AppProps) {
   };
   const apiKey = process.env.NEXT_PUBLIC_GMAPS_API_KEY;
   return (
-    <Wrapper apiKey={apiKey as string} libraries={["places"]} render={render}>
+    <Wrapper
+      apiKey={apiKey as string}
+      libraries={["places"]}
+      render={render}
+    >
       <Component {...pageProps} />
     </Wrapper>
   );

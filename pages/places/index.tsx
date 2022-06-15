@@ -1,5 +1,5 @@
 import React from "react";
-import { NextPage } from "next";
+import type { NextPage } from "next";
 import Link from "next/link";
 import styled from "styled-components";
 
@@ -41,7 +41,7 @@ const AddPlaceBtn = styled.a`
 
 type Props = {};
 
-const Places: NextPage = (props: Props) => {
+const PlacesPage: NextPage = (props: Props) => {
   return (
     <PageLayout>
       <TopBar>
@@ -55,4 +55,4 @@ const Places: NextPage = (props: Props) => {
   );
 };
 
-export default Places;
+export default PlacesPage;
