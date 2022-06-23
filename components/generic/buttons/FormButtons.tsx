@@ -1,15 +1,12 @@
+import { signOutUser } from "@/pages/login/_helperLogin";
 import React from "react";
 import styled from "styled-components";
 
 // Styled Components
-const StyledSubmit = styled.button`
-  background-color: var(--color-highlight-1);
-
+const BasicBtn = styled.button`
   width: fit-content;
   padding: 0.8rem 1.5rem;
   margin-inline: auto;
-
-  border: 2px solid var(--color-highlight-1);
   border-radius: 5px;
 
   transition: all 0.2s;
@@ -24,11 +21,15 @@ const StyledSubmit = styled.button`
     cursor: pointer;
   }
 `;
+const StyledSubmit = styled(BasicBtn)`
+  background-color: var(--color-highlight-1);
+  border: 2px solid var(--color-highlight-1);
+`;
 
-type SubmitButtonProps = {
+type ButtonProps = {
   text?: string;
 };
 
-export const SubmitButton = ({ text = "Submit" }: SubmitButtonProps) => {
+export const SubmitButton = ({ text = "Submit" }: ButtonProps) => {
   return <StyledSubmit type="submit">{text}</StyledSubmit>;
 };

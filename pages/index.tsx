@@ -8,8 +8,25 @@ import PageLayout from "@/components/layouts/PageLayout";
 
 // STYLED COMPONENTS
 import { GreyBackground } from "../styles/styledComponents/BackgroundDiv";
+
 const PageHeader = styled.h1`
   text-align: center;
+`;
+
+const HomeText = styled.p`
+  font-weight: 300;
+  font-size: 2rem;
+  text-align: center;
+
+  max-width: 80ch;
+
+  padding: 5rem 8rem;
+
+  margin-inline: auto;
+  margin-block: 15vh;
+
+  border: 2px solid var(--color-highlight-1);
+  border-radius: 10px;
 `;
 
 const Home: NextPage = () => {
@@ -26,6 +43,12 @@ const Home: NextPage = () => {
       <PageLayout>
         <GreyBackground />
         <PageHeader>Tandemly</PageHeader>
+        <HomeText>
+          Welcome to the Tandemly home page! Tandemly is currently being
+          developed and new features will be released as soon as
+          they&apos;re ready. Feel free to take a look around and check
+          back regularly!
+        </HomeText>
       </PageLayout>
     </div>
   );
