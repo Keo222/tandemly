@@ -42,7 +42,7 @@ const PlacesList = (props: Props) => {
       });
       setBackgroundMap(gmap);
     }
-  }, []);
+  }, [backgroundMap]);
 
   useEffect(() => {
     const storedPlaces = localStorage.getItem("savedPlaces");

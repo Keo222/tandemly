@@ -4,7 +4,7 @@ import Link from "next/link";
 import styled from "styled-components";
 
 // Components
-import PlacesList from "../../components/placesPage/PlacesList";
+import PlacesList from "../../components/pageSpecific/placesPage/PlacesList";
 // Layout
 import PageLayout from "@/components/layouts/PageLayout";
 
