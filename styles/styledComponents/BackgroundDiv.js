@@ -9,5 +9,5 @@ export const GreyBackground = styled.div`
   bottom: 0;
   left: 0;
   z-index: -5;
-  background-color: var(--color-dark-grey);
+  background-color: ${({ theme }) => theme.color.darkGrey}; ;
 `;

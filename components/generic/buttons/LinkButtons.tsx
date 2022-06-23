@@ -6,22 +6,22 @@ import { signOutUser } from "@/pages/login/_helperLogin";
 // Styled Components
 const LinkBtn = styled.a`
   padding: 1rem 2rem;
-  border: 2px solid var(--color-highlight-1);
+  border: 2px solid ${({ theme }) => theme.color.highlight1};
   border-radius: 5px;
   block-size: fit-content;
   transition: all 0.2s;
 
   &:hover {
-    background-color: var(--color-highlight-1);
+    background-color: ${({ theme }) => theme.color.highlight1};
     color: #1c1c1c;
   }
 `;
 
 const StyledSignOut = styled(LinkBtn)`
-  border: 2px solid var(--color-failure-red);
+  border: 2px solid ${({ theme }) => theme.color.failureRed};
   color: var(--color-text-light);
   &:hover {
-    background-color: var(--color-failure-red);
+    background-color: ${({ theme }) => theme.color.failureRed};
     color: var(--color-text-light);
   }
 `;

@@ -5,7 +5,7 @@ import styled from "styled-components";
 // Layout
 import PageLayout from "@/components/layouts/PageLayout";
 // Components
-import TMDBDisclosure from "../../components/moviesPage/TMDBDisclosure";
+import TMDBDisclosure from "../../components/pageSpecific/moviesPage/TMDBDisclosure";
 // StyledComponents
 import { GreyBackground } from "../../styles/styledComponents/BackgroundDiv";
 

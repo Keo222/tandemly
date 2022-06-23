@@ -13,7 +13,7 @@ const TopBar = styled.div`
   padding: 4rem 4rem 2rem;
   width: 100%;
   display: flex;
-  color: var(--color-text-light);
+  color: ${({ theme }) => theme.color.textLight};
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   justify-content: center;
@@ -32,16 +32,14 @@ const AddPlaceBtn = styled.a`
   margin-left: auto;
   padding: 0.8rem 1.6rem;
   border-radius: 15px;
-  background-color: var(--color-success-green);
+  background-color: ${({ theme }) => theme.color.successGreen};
 
-  color: var(--color-text-dark);
+  color: ${({ theme }) => theme.color.textDark};
   font-size: 1.6rem;
   font-weight: 500;
 `;
 
-type Props = {};
-
-const PlacesPage: NextPage = (props: Props) => {
+const PlacesPage: NextPage = () => {
   return (
     <PageLayout>
       <TopBar>

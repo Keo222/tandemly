@@ -1,6 +1,6 @@
 import React from "react";
 import type { NextPage } from "next";
-import Map from "../../components/mapPage/Map";
+import Map from "../../components/pageSpecific/mapPage/Map";
 
 // Layout
 import PageLayout from "@/components/layouts/PageLayout";

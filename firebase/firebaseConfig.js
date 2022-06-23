@@ -23,7 +23,7 @@ export const firebaseApp = initializeApp(firebaseConfig);
 
 // ***FIREBASE LIBRARIES***
 // Analytics
-export const firebaseAnalytics = getAnalytics(firebaseApp);
+// export const firebaseAnalytics = getAnalytics(firebaseApp);
 // Authentication
 export const firebaseAuth = getAuth(firebaseApp);
 // Database

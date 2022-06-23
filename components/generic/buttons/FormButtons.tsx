@@ -17,13 +17,13 @@ const BasicBtn = styled.button`
 
   &:hover {
     background-color: transparent;
-    color: var(--color-text-light);
+    color: ${({ theme }) => theme.color.textLight};
     cursor: pointer;
   }
 `;
 const StyledSubmit = styled(BasicBtn)`
-  background-color: var(--color-highlight-1);
-  border: 2px solid var(--color-highlight-1);
+  background-color: ${({ theme }) => theme.color.highlight1};
+  border: 2px solid ${({ theme }) => theme.color.highlight1}; ;
 `;
 
 type ButtonProps = {

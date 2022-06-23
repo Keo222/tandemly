@@ -25,7 +25,7 @@ const HomeText = styled.p`
   margin-inline: auto;
   margin-block: 15vh;
 
-  border: 2px solid var(--color-highlight-1);
+  border: 2px solid ${({ theme }) => theme.color.highlight1};
   border-radius: 10px;
 `;
 

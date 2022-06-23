@@ -18,7 +18,7 @@ const PlaceDiv = styled.div`
   border: 2px solid #efefef;
   border-radius: 8px;
   display: flex;
-  background-color: var(--color-dark-grey);
+  background-color: ${({ theme }) => theme.color.darkGrey}; ;
 `;
 
 const ImgContainer = styled.div`
@@ -54,20 +54,20 @@ const IsOpen = styled.p`
 `;
 
 const OpenNow = styled(IsOpen)`
-  color: var(--color-success-green);
+  color: ${({ theme }) => theme.color.successGreen};
 `;
 const ClosedNow = styled(IsOpen)`
-  color: var(--color-failure-red);
+  color: ${({ theme }) => theme.color.failureRed};
 `;
 const UnknownNow = styled(IsOpen)`
-  color: var(--color-warning-yellow);
+  color: ${({ theme }) => theme.color.warningYellow};
 `;
 
 const SiteLink = styled.a`
   margin: auto;
 
   &:hover {
-    color: var(--color-bright-blue);
+    color: ${({ theme }) => theme.color.brightBlue};
   }
 `;
 
