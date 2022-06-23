@@ -11,7 +11,7 @@ import {
 import { SubmitButton } from "@/components/generic/buttons/FormButtons";
 
 // Form Functions
-import { signUpNewUser } from "../../../functions/userFuncs";
+import { signUpNewUser } from "../../../functions/userInfoFuncs";
 
 type Props = {};
 

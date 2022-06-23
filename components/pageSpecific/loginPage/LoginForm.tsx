@@ -11,26 +11,20 @@ import {
 import { SubmitButton } from "@/components/generic/buttons/FormButtons";
 
 // Form Functions
-import { signInExistingUser } from "@/functions/userFuncs";
+import { signInExistingUser } from "@/functions/userInfoFuncs";
+import { useRouter } from "next/router";
 
 type Props = {};
 
 const LoginForm = (props: Props) => {
+  const router = useRouter();
   return (
     <Formik
       initialValues={{
-        firstName: "",
-        lastName: "",
         email: "",
         password: "",
       }}
       validationSchema={Yup.object({
-        firstName: Yup.string()
-          .required("Required")
-          .max(12, "First name must be 12 characters or less"),
-        lastName: Yup.string()
-          .required("Required")
-          .max(12, "Last name must be 12 characters or less"),
         email: Yup.string()
           .required("Required")
           .email("Not a vaild email"),
@@ -41,22 +35,21 @@ const LoginForm = (props: Props) => {
             "Must include at least 1 special character"
           )
           .matches(/[A-Z]+/, "Must include at least 1 capital letter")
-          .length(8, "Must be at least 8 characters"),
+          .min(8, "Must be at least 8 characters"),
       })}
-      onSubmit={(values, { setSubmitting }) => {
-        console.log("Submitted! Values:", values);
+      onSubmit={async (values) => {
+        try {
+          await signInExistingUser(values.email, values.password);
+          router.push("/");
+          console.log("Signed in existing user!");
+        } catch (error: any) {
+          console.error(error);
+        }
       }}
     >
       <Form>
         <FormOrganization>
           <FormHeader text={"Sign In"} />
-          <label htmlFor="firstName">First Name</label>
-          <Field name="firstName" type="text" as={StyledTextInput} />
-          <ErrorMessage name="firstName" />
-
-          <label htmlFor="lastName">Last Name</label>
-          <Field name="lastName" type="text" as={StyledTextInput} />
-          <ErrorMessage name="lastName" />
 
           <label htmlFor="email">Email</label>
           <Field name="email" type="email" as={StyledTextInput} />
