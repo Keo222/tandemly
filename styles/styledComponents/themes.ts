@@ -1,3 +1,5 @@
+// REMEMBER TO UPDATE STYLED.D.TS WHEN UPDATING THIS FILE
+
 export const mainTheme = {
   color: {
     textLight: "#efefef",

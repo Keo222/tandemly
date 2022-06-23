@@ -4,8 +4,8 @@ import Image from "next/image";
 import { getDay } from "date-fns";
 
 // Image Import
-import catPic from "../../public/tempImgs/square_cat.jpeg";
-import gMapsLogo from "../../public/logos/gmaps_logo.png";
+import catPic from "../../../public/tempImgs/square_cat.jpeg";
+import gMapsLogo from "../../../public/logos/gmaps_logo.png";
 
 // Styled Components
 const PlaceDiv = styled.div`

@@ -6,9 +6,6 @@ import styled from "styled-components";
 // Layout
 import PageLayout from "@/components/layouts/PageLayout";
 
-// STYLED COMPONENTS
-import { GreyBackground } from "../styles/styledComponents/BackgroundDiv";
-
 const PageHeader = styled.h1`
   text-align: center;
 `;
@@ -41,7 +38,6 @@ const Home: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <PageLayout>
-        <GreyBackground />
         <PageHeader>Tandemly</PageHeader>
         <HomeText>
           Welcome to the Tandemly home page! Tandemly is currently being

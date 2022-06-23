@@ -6,8 +6,6 @@ import styled from "styled-components";
 import PageLayout from "@/components/layouts/PageLayout";
 // Components
 import TMDBDisclosure from "../../components/pageSpecific/moviesPage/TMDBDisclosure";
-// StyledComponents
-import { GreyBackground } from "../../styles/styledComponents/BackgroundDiv";
 
 const MovieHeader = styled.h1`
   text-align: center;
@@ -18,7 +16,6 @@ type Props = {};
 const MoviePage: NextPage = (props: Props) => {
   return (
     <PageLayout>
-      <GreyBackground />
       <MovieHeader>Movies</MovieHeader>
       <TMDBDisclosure />
     </PageLayout>
