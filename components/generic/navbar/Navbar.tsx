@@ -7,7 +7,7 @@ import { firebaseAuth } from "../../../firebase/firebaseConfig";
 import tandemlyLogo from "public/logos/tandem_bike.svg";
 
 // Componenets
-import { NavLinkButton, SignOutButton } from "../buttons/LinkButtons";
+import { LinkButton, SignOutButton } from "../buttons/LinkButtons";
 import Link from "next/link";
 
 // Styled Components
@@ -27,11 +27,7 @@ const NavLinks = styled.div`
 
 const WelcomeMsg = styled.h5``;
 
-type Props = {};
-
-const Navbar = (props: Props) => {
-  const user = firebaseAuth.currentUser;
-  console.log(user);
+const Navbar = () => {
   return (
     <Nav>
       <Link href="/">
@@ -40,13 +36,17 @@ const Navbar = (props: Props) => {
         </a>
       </Link>
       <NavLinks>
-        <NavLinkButton text="Places" url="/places" />
-        <NavLinkButton text="Map" url="/map" />
-        <NavLinkButton text="Movies" url="/movies" />
-        {!user && <NavLinkButton text="Login" url="/login" />}
-        {user && <SignOutButton />}
-
-        {user && <WelcomeMsg>Welcome!</WelcomeMsg>}
+        <LinkButton text="Places" url="/places" />
+        <LinkButton text="Map" url="/map" />
+        <LinkButton text="Movies" url="/movies" />
+        {firebaseAuth.currentUser ? (
+          <>
+            <SignOutButton />
+            <WelcomeMsg>Welcome!</WelcomeMsg>
+          </>
+        ) : (
+          <LinkButton text="Login" url="/login" />
+        )}
       </NavLinks>
     </Nav>
   );

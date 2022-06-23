@@ -1,7 +1,8 @@
 import React from "react";
 import Link from "next/link";
 import styled from "styled-components";
-import { signOutUser } from "@/pages/login/_helperLogin";
+import { signOutUser } from "../../../functions/userInfoFuncs";
+import { useRouter } from "next/router";
 
 // Styled Components
 const LinkBtn = styled.a`
@@ -9,6 +10,7 @@ const LinkBtn = styled.a`
   border: 2px solid ${({ theme }) => theme.color.highlight1};
   border-radius: 5px;
   block-size: fit-content;
+  max-width: fit-content;
   transition: all 0.2s;
 
   &:hover {
@@ -31,7 +33,7 @@ type LinkBtnProps = {
   url: string;
 };
 
-export const NavLinkButton = ({ text, url }: LinkBtnProps) => {
+export const LinkButton = ({ text, url }: LinkBtnProps) => {
   return (
     <Link href={url}>
       <LinkBtn>{text}</LinkBtn>
@@ -44,8 +46,14 @@ type SignOutBtnProps = {
 };
 
 export const SignOutButton = ({ text = "Sign Out" }: SignOutBtnProps) => {
+  const router = useRouter();
   return (
-    <StyledSignOut onClick={async () => await signOutUser()}>
+    <StyledSignOut
+      onClick={async () => {
+        await signOutUser();
+        router.push("/");
+      }}
+    >
       {text}
     </StyledSignOut>
   );

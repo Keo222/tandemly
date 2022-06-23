@@ -27,16 +27,21 @@ const TitleHeader = styled.h1`
   grid-column: 2;
 `;
 
-const AddPlaceBtn = styled.a`
-  margin-block: auto;
-  margin-left: auto;
-  padding: 0.8rem 1.6rem;
-  border-radius: 15px;
-  background-color: ${({ theme }) => theme.color.successGreen};
+const LinkBtn = styled.a`
+  padding: 1rem 2rem;
+  border: 2px solid ${({ theme }) => theme.color.highlight1};
+  border-radius: 5px;
+  block-size: fit-content;
+  max-width: fit-content;
+  transition: all 0.2s;
+  justify-self: flex-end;
+  background-color: ${({ theme }) => theme.color.highlight1};
+  color: #1c1c1c;
 
-  color: ${({ theme }) => theme.color.textDark};
-  font-size: 1.6rem;
-  font-weight: 500;
+  &:hover {
+    background-color: transparent;
+    color: ${({ theme }) => theme.color.textLight};
+  }
 `;
 
 const PlacesPage: NextPage = () => {
@@ -44,8 +49,8 @@ const PlacesPage: NextPage = () => {
     <PageLayout>
       <TopBar>
         <TitleHeader>Places</TitleHeader>
-        <Link href="/test">
-          <AddPlaceBtn>Add Place</AddPlaceBtn>
+        <Link href="/map">
+          <LinkBtn>Add Place</LinkBtn>
         </Link>
       </TopBar>
       <PlacesList />

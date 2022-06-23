@@ -3,9 +3,6 @@ import { useState, useRef, useEffect } from "react";
 import { useRouter } from "next/router";
 import styled from "styled-components";
 
-// Styled Components
-import { GreyBackground } from "../../../styles/styledComponents/BackgroundDiv";
-
 const PageWrapper = styled.div`
   display: flex;
   margin: 3vh 3vw;
@@ -250,7 +247,6 @@ const Map: React.FC = () => {
 
   return (
     <PageWrapper>
-      <GreyBackground />
       <MapDiv ref={mapRef} />
       <SectionControlsDiv>
         <ControlGrouping>

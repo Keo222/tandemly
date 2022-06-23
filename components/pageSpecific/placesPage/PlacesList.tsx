@@ -25,9 +25,7 @@ const NoPlaces = styled.p`
   text-align: center;
 `;
 
-type Props = {};
-
-const PlacesList = (props: Props) => {
+const PlacesList = () => {
   const backgroundMapRef = useRef<HTMLDivElement>(null);
   const [backgroundMap, setBackgroundMap] = useState<google.maps.Map>();
   const [placesInfo, setPlacesInfo] = useState<string[] | null>(null);
@@ -75,7 +73,7 @@ const PlacesList = (props: Props) => {
         <BackgroundMap ref={backgroundMapRef} />
       </MapContainer>
       {placesInfo ? (
-        placesInfo?.map((p, i) => (
+        placesInfo.map((p, i) => (
           <IndividualPlace key={i + p} id={p} gMap={backgroundMap} />
         ))
       ) : (
