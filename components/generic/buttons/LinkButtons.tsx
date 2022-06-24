@@ -10,7 +10,6 @@ const LinkBtn = styled.a`
   border: 2px solid ${({ theme }) => theme.color.highlight1};
   border-radius: 5px;
   block-size: fit-content;
-  max-width: fit-content;
   transition: all 0.2s;
 
   &:hover {

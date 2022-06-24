@@ -39,10 +39,7 @@ const UpdatePasswordForm = () => {
       })}
       onSubmit={async (values) => {
         try {
-          await updateUserPassword(
-            values.newPassword,
-            values.confirmPassword
-          );
+          await updateUserPassword(values.newPassword);
         } catch (error: any) {
           console.error(error);
         }

@@ -74,9 +74,13 @@ export async function updateUserDisplayName(displayName: string) {
   }
 }
 
-export async function updateUserPassword(
-  newPassword: string,
-  oldPassword: string
-) {
-  console.log(firebaseAuth.currentUser);
+export async function updateUserPassword(newPassword: string) {
+  try {
+    const user = firebaseAuth.currentUser;
+    if (user) {
+      await updatePassword(user, newPassword);
+    }
+  } catch (error: any) {
+    console.error(error.code + ": " + error.message);
+  }
 }

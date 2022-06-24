@@ -1,7 +1,10 @@
-import React from "react";
+import React, { useContext } from "react";
 import Image from "next/image";
+import type { GetStaticProps } from "next";
 import styled from "styled-components";
-import { firebaseAuth } from "../../../firebase/firebaseConfig";
+
+// Context
+import { AuthContext } from "context/authContext";
 
 // Images
 import tandemlyLogo from "public/logos/tandem_bike.svg";
@@ -28,6 +31,7 @@ const NavLinks = styled.div`
 const WelcomeMsg = styled.h5``;
 
 const Navbar = () => {
+  const loggedIn = useContext(AuthContext);
   return (
     <Nav>
       <Link href="/">
@@ -39,7 +43,7 @@ const Navbar = () => {
         <LinkButton text="Places" url="/places" />
         <LinkButton text="Map" url="/map" />
         <LinkButton text="Movies" url="/movies" />
-        {firebaseAuth.currentUser ? (
+        {loggedIn ? (
           <>
             <SignOutButton />
             <WelcomeMsg>Welcome!</WelcomeMsg>
