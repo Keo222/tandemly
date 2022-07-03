@@ -38,7 +38,7 @@ const Home: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <PageLayout>
-        <PageHeader>Tandemly</PageHeader>
+        <PageHeader>Home</PageHeader>
         <HomeText>
           Welcome to the Tandemly home page! Tandemly is currently being
           developed and new features will be released as soon as
