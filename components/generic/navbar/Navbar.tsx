@@ -28,6 +28,18 @@ const NavLinks = styled.div`
   gap: 2rem;
 `;
 
+const LogoAndHeaderLink = styled.a`
+  display: flex;
+  justify-content: center;
+`;
+
+const NavHeader = styled.p`
+  display: inline-block;
+  padding-left: 3rem;
+  font-size: 4rem;
+  margin-block: 3rem;
+`;
+
 const WelcomeMsg = styled.h5``;
 
 const Navbar = () => {
@@ -35,9 +47,10 @@ const Navbar = () => {
   return (
     <Nav>
       <Link href="/">
-        <a>
+        <LogoAndHeaderLink>
           <Image src={tandemlyLogo} alt="Tandemly logo" />
-        </a>
+          <NavHeader>Tandemly</NavHeader>
+        </LogoAndHeaderLink>
       </Link>
       <NavLinks>
         <LinkButton text="Places" url="/places" />
