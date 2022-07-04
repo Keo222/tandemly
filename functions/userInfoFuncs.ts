@@ -5,8 +5,33 @@ import {
   signOut,
   updatePassword,
   updateProfile,
+  User,
 } from "firebase/auth";
-import { firebaseAuth } from "../firebase/firebaseConfig";
+import { firebaseAuth, db } from "../firebase/firebaseConfig";
+import { doc, setDoc } from "firebase/firestore";
+
+async function saveNewUser(id: string) {
+  const genericUserData = { role: "user" };
+  await setDoc(doc(db, "userInfo", id), genericUserData);
+}
+
+export async function updateUserProfile(
+  user: User,
+  email?: string,
+  displayName?: string
+) {
+  const newProfileInfo: { displayName?: string; email?: string } = {};
+  if (typeof displayName !== "undefined") {
+    newProfileInfo.displayName = displayName;
+  }
+  if (typeof email !== "undefined") {
+    newProfileInfo.email = email;
+  }
+  if (newProfileInfo !== {}) {
+    await updateProfile(user, newProfileInfo);
+    console.log("It worked!");
+  }
+}
 
 export async function signUpNewUser(
   email: string,
@@ -19,8 +44,10 @@ export async function signUpNewUser(
       password
     );
     const user = userCredential.user;
-    sendEmailVerification(user);
-    console.log("Log after email:", user);
+    await sendEmailVerification(user);
+
+    const id = user.uid;
+    await saveNewUser(id);
   } catch (error: any) {
     const errorCode = error.code;
     const errorMessage = error.message;

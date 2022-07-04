@@ -11,7 +11,11 @@ import {
 import { SubmitButton } from "@/components/generic/buttons/FormButtons";
 
 // Form Functions
-import { signUpNewUser } from "../../../functions/userInfoFuncs";
+import {
+  signUpNewUser,
+  updateUserProfile,
+} from "../../../functions/userInfoFuncs";
+import { firebaseAuth } from "@/firebase/firebaseConfig";
 
 type Props = {};
 
@@ -48,11 +52,12 @@ const SignUpForm = (props: Props) => {
       })}
       onSubmit={async (values, { setSubmitting }) => {
         await signUpNewUser(values.email, values.password);
-        console.log("Submitted! Values:", values);
-        setTimeout(() => {
-          alert("Submitted!");
-          setSubmitting(false);
-        }, 3000);
+        const displayName = values.firstName + " " + values.lastName;
+        const user = firebaseAuth.currentUser;
+        if (user) {
+          console.log("There is a user");
+          await updateUserProfile(user, values.email, displayName);
+        }
       }}
     >
       <Form>
