@@ -12,7 +12,7 @@ import { doc, setDoc } from "firebase/firestore";
 
 async function saveNewUser(id: string) {
   const genericUserData = { role: "user" };
-  await setDoc(doc(db, "userInfo", id), genericUserData);
+  await setDoc(doc(db, "users", id), genericUserData);
 }
 
 export async function updateUserProfile(
