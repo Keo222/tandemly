@@ -7,6 +7,7 @@ import styled from "styled-components";
 import PlacesList from "../../components/pageSpecific/placesPage/PlacesList";
 // Layout
 import PageLayout from "@/components/layouts/PageLayout";
+import Head from "next/head";
 
 // Styled Components
 const TopBar = styled.div`
@@ -47,6 +48,9 @@ const LinkBtn = styled.a`
 const PlacesPage: NextPage = () => {
   return (
     <PageLayout>
+      <Head>
+        <title>Tandemly | Places</title>
+      </Head>
       <TopBar>
         <TitleHeader>Places</TitleHeader>
         <Link href="/map">
