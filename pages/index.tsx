@@ -5,6 +5,7 @@ import styled from "styled-components";
 
 // Layout
 import PageLayout from "@/components/layouts/PageLayout";
+import { firebaseAuth } from "@/firebase/firebaseConfig";
 
 const PageHeader = styled.h1`
   text-align: center;
@@ -27,6 +28,7 @@ const HomeText = styled.p`
 `;
 
 const Home: NextPage = () => {
+  const name = firebaseAuth.currentUser?.displayName;
   return (
     <div>
       <Head>
@@ -38,7 +40,7 @@ const Home: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <PageLayout>
-        <PageHeader>Tandemly</PageHeader>
+        <PageHeader>Welcome, {name}</PageHeader>
         <HomeText>
           Welcome to the Tandemly home page! Tandemly is currently being
           developed and new features will be released as soon as

@@ -8,9 +8,9 @@ export const FormOrganization = styled.div`
   margin-inline: auto;
   margin-block: 5rem;
 
-  & input:last-of-type {
+  /* & input:last-of-type {
     margin-bottom: 3rem;
-  }
+  } */
 `;
 
 const SCFormHeader = styled.h3`

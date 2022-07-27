@@ -1,4 +1,5 @@
 import React from "react";
+import Link from "next/link";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 
@@ -9,9 +10,14 @@ import {
   StyledTextInput,
 } from "@/components/generic/forms";
 import { SubmitButton } from "@/components/generic/buttons/FormButtons";
+import { SignUpText, UnderlinedEm } from "./styles";
 
 // Form Functions
-import { signUpNewUser } from "../../../functions/userInfoFuncs";
+import {
+  signUpNewUser,
+  updateUserProfile,
+} from "../../../functions/userInfoFuncs";
+import { firebaseAuth } from "@/firebase/firebaseConfig";
 
 type Props = {};
 
@@ -48,11 +54,12 @@ const SignUpForm = (props: Props) => {
       })}
       onSubmit={async (values, { setSubmitting }) => {
         await signUpNewUser(values.email, values.password);
-        console.log("Submitted! Values:", values);
-        setTimeout(() => {
-          alert("Submitted!");
-          setSubmitting(false);
-        }, 3000);
+        const displayName = values.firstName + " " + values.lastName;
+        const user = firebaseAuth.currentUser;
+        if (user) {
+          console.log("There is a user");
+          await updateUserProfile(user, values.email, displayName);
+        }
       }}
     >
       <Form>
@@ -73,6 +80,15 @@ const SignUpForm = (props: Props) => {
           <label htmlFor="password">Password</label>
           <Field name="password" type="password" as={StyledTextInput} />
           <ErrorMessage name="password" />
+          <SignUpText>
+            Already have an account? Sign in{" "}
+            <Link href="/login">
+              <a>
+                <UnderlinedEm>here</UnderlinedEm>
+              </a>
+            </Link>
+            !
+          </SignUpText>
 
           <SubmitButton />
         </FormOrganization>
