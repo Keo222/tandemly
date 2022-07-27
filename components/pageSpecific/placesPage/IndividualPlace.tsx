@@ -1,11 +1,10 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import Image from "next/image";
-import { getDay } from "date-fns";
 
-// Image Import
-import catPic from "../../../public/tempImgs/square_cat.jpeg";
-import gMapsLogo from "../../../public/logos/gmaps_logo.png";
+// Images
+import { squareCatImg } from "images/tempImgs";
+import { googleMapsLogo } from "images/logos";
 
 // Styled Components
 const PlaceDiv = styled.div`
@@ -103,8 +102,8 @@ const IndividualPlace = ({ id, gMap }: Props) => {
               }
               if (place.opening_hours !== undefined) {
                 if (place.opening_hours.weekday_text !== undefined) {
-                  const today = new Date();
-                  const day = getDay(today);
+                  // const today = new Date();
+                  // const day = getDay(today);
                   setOpenHoursText(place.opening_hours.weekday_text[0]);
                 }
                 const open = place.opening_hours.isOpen();
@@ -123,7 +122,7 @@ const IndividualPlace = ({ id, gMap }: Props) => {
     <PlaceDiv>
       <ImgContainer>
         <Image
-          src={imgUrl !== undefined ? imgUrl : catPic}
+          src={imgUrl !== undefined ? imgUrl : squareCatImg}
           layout="responsive"
           width={768}
           height={768}
@@ -156,7 +155,7 @@ const IndividualPlace = ({ id, gMap }: Props) => {
             href={`https://www.google.com/maps/place/?q=place_id:${id}`}
           >
             <Image
-              src={gMapsLogo}
+              src={googleMapsLogo}
               height={50}
               width={50}
               alt="Google Maps logo"
