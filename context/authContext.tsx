@@ -1,4 +1,4 @@
-import { createContext, useContext, useState } from "react";
+import { createContext, useState } from "react";
 import { firebaseAuth } from "@/firebase/firebaseConfig";
 import { onAuthStateChanged } from "firebase/auth";
 
@@ -19,8 +19,6 @@ export const AuthContextProvider = ({ children }: Props) => {
     }
   });
   return (
-    <AuthContext.Provider value={loggedIn}>
-      {children}
-    </AuthContext.Provider>
+    <AuthContext.Provider value={loggedIn}>{children}</AuthContext.Provider>
   );
 };

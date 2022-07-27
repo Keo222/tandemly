@@ -1,13 +1,12 @@
 import React, { useContext } from "react";
 import Image from "next/image";
-import type { GetStaticProps } from "next";
 import styled from "styled-components";
 
 // Context
 import { AuthContext } from "context/authContext";
 
 // Images
-import tandemlyLogo from "public/logos/tandem_bike.svg";
+import { tandemlyLogo } from "images/logos";
 
 // Componenets
 import { LinkButton, SignOutButton } from "../buttons/LinkButtons";
