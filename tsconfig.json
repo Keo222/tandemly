@@ -17,10 +17,11 @@
     "baseUrl": ".",
     "paths": {
       "@/components/*": ["components/*"],
-      "@/firebase/*": ["firebase/*"],
-      "@/functions/*": ["functions/*"],
+      "@/firebase/*": ["utils/firebase/*"],
+      "@/functions/*": ["utils/functions/*"],
       "@/pages/*": ["pages/*"],
-      "@/public/*": ["public/*"]
+      "@/public/*": ["public/*"],
+      "@/utils/*": ["utils/*"]
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],

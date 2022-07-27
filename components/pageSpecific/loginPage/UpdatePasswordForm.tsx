@@ -8,10 +8,10 @@ import {
   FormHeader,
   StyledTextInput,
 } from "@/components/generic/forms";
-import { SubmitButton } from "@/components/generic/buttons/FormButtons";
+import { SubmitButton } from "@/components/generic/buttons";
 
 // Form Function
-import { updateUserPassword } from "../../../functions/userInfoFuncs";
+import { updateUserPassword } from "@/utils/helperFunctions/userInfoFuncs";
 
 const UpdatePasswordForm = () => {
   return (
@@ -27,10 +27,7 @@ const UpdatePasswordForm = () => {
             /[$&+,:;=?@#|'<>.^*()%!-]+/,
             "Password must include at least 1 special character"
           )
-          .matches(
-            /[A-Z]+/,
-            "Password must include at least 1 capital letter"
-          )
+          .matches(/[A-Z]+/, "Password must include at least 1 capital letter")
           .min(8, "Password must be at least 8 characters"),
         confirmPassword: Yup.string().oneOf(
           [Yup.ref("password"), null],
@@ -54,11 +51,7 @@ const UpdatePasswordForm = () => {
           <ErrorMessage name="newPassword" />
 
           <label htmlFor="confirmPassword">Confirm New Password</label>
-          <Field
-            name="confirmPassword"
-            type="password"
-            as={StyledTextInput}
-          />
+          <Field name="confirmPassword" type="password" as={StyledTextInput} />
           <ErrorMessage name="confirmPassword" />
 
           <SubmitButton />

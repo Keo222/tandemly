@@ -9,15 +9,15 @@ import {
   FormHeader,
   StyledTextInput,
 } from "@/components/generic/forms";
-import { SubmitButton } from "@/components/generic/buttons/FormButtons";
+import { SubmitButton } from "@/components/generic/buttons";
 import { SignUpText, UnderlinedEm } from "./styles";
 
 // Form Functions
 import {
   signUpNewUser,
   updateUserProfile,
-} from "../../../functions/userInfoFuncs";
-import { firebaseAuth } from "@/firebase/firebaseConfig";
+} from "@/utils/helperFunctions/userInfoFuncs";
+import { firebaseAuth } from "@/utils/firebaseConfig";
 
 type Props = {};
 
@@ -46,10 +46,7 @@ const SignUpForm = (props: Props) => {
             /[$&+,:;=?@#|'<>.^*()%!-]+/,
             "Password must include at least 1 special character"
           )
-          .matches(
-            /[A-Z]+/,
-            "Password must include at least 1 capital letter"
-          )
+          .matches(/[A-Z]+/, "Password must include at least 1 capital letter")
           .min(8, "Password must be at least 8 characters"),
       })}
       onSubmit={async (values, { setSubmitting }) => {

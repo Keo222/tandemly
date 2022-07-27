@@ -1,7 +1,7 @@
 import PageLayout from "@/components/layouts/PageLayout";
 import { NextPage } from "next";
 import React from "react";
-import UpdatePasswordForm from "../../components/pageSpecific/loginPage/UpdatePasswordForm";
+import UpdatePasswordForm from "@/components/pageSpecific/loginPage/UpdatePasswordForm";
 
 // Layout
 
@@ -14,21 +14,5 @@ const updatePassword: NextPage = (props: Props) => {
     </PageLayout>
   );
 };
-
-// export const getStaticProps: GetStaticProps = () => {
-//   onAuthStateChanged(firebaseAuth, (user) => {
-//     if (!user) {
-//       return {
-//         redirect: {
-//           destination: "/login",
-//           permanent: false,
-//         },
-//       };
-//     }
-//   });
-//   return {
-//     props: {},
-//   };
-// };
 
 export default updatePassword;

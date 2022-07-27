@@ -1,5 +1,5 @@
 import { createContext, useState } from "react";
-import { firebaseAuth } from "@/firebase/firebaseConfig";
+import { firebaseAuth } from "@/utils/firebaseConfig";
 import { onAuthStateChanged } from "firebase/auth";
 
 type Props = {

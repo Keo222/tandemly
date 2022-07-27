@@ -1,6 +1,6 @@
 import { useEffect, useContext } from "react";
 import { useRouter } from "next/router";
-import protectedPaths from "../../etc/ProtectedPaths";
+import protectedPaths from "@/utils/etc/ProtectedPaths";
 import { AuthContext } from "context/authContext";
 
 type Props = {

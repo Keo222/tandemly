@@ -7,10 +7,6 @@ export const FormOrganization = styled.div`
   width: clamp(200px, 60vw, 60ch);
   margin-inline: auto;
   margin-block: 5rem;
-
-  /* & input:last-of-type {
-    margin-bottom: 3rem;
-  } */
 `;
 
 const SCFormHeader = styled.h3`

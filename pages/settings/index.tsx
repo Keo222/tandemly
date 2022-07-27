@@ -1,5 +1,5 @@
 import PageLayout from "@/components/layouts/PageLayout";
-import { firebaseAuth } from "@/firebase/firebaseConfig";
+import { firebaseAuth } from "@/utils/firebaseConfig";
 import { NextPage } from "next";
 import React from "react";
 

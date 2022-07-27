@@ -1,11 +1,10 @@
 import type { NextPage } from "next";
 import Head from "next/head";
-import Link from "next/link";
 import styled from "styled-components";
 
 // Layout
 import PageLayout from "@/components/layouts/PageLayout";
-import { firebaseAuth } from "@/firebase/firebaseConfig";
+import { firebaseAuth } from "@/utils/firebaseConfig";
 
 const PageHeader = styled.h1`
   text-align: center;
@@ -43,9 +42,8 @@ const Home: NextPage = () => {
         <PageHeader>Welcome, {name}</PageHeader>
         <HomeText>
           Welcome to the Tandemly home page! Tandemly is currently being
-          developed and new features will be released as soon as
-          they&apos;re ready. Feel free to take a look around and check
-          back regularly!
+          developed and new features will be released as soon as they&apos;re
+          ready. Feel free to take a look around and check back regularly!
         </HomeText>
       </PageLayout>
     </div>

@@ -9,7 +9,7 @@ import { AuthContext } from "context/authContext";
 import { tandemlyLogo } from "images/logos";
 
 // Componenets
-import { LinkButton, SignOutButton } from "../buttons/LinkButtons";
+import { LinkButton, SignOutButton } from "@/components/generic/buttons/";
 import Link from "next/link";
 
 // Styled Components

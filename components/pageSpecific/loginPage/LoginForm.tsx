@@ -1,4 +1,3 @@
-import React from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 
@@ -8,11 +7,11 @@ import {
   FormHeader,
   StyledTextInput,
 } from "@/components/generic/forms";
-import { SubmitButton } from "@/components/generic/buttons/FormButtons";
+import { SubmitButton } from "@/components/generic/buttons";
 import { SignUpText, UnderlinedEm } from "./styles";
 
 // Form Functions
-import { signInExistingUser } from "@/functions/userInfoFuncs";
+import { signInExistingUser } from "@/utils/helperFunctions/userInfoFuncs";
 import { useRouter } from "next/router";
 import Link from "next/link";
 
@@ -27,9 +26,7 @@ const LoginForm = (props: Props) => {
         password: "",
       }}
       validationSchema={Yup.object({
-        email: Yup.string()
-          .required("Required")
-          .email("Not a vaild email"),
+        email: Yup.string().required("Required").email("Not a vaild email"),
         password: Yup.string()
           .required("Required")
           .matches(

@@ -8,9 +8,7 @@ import PageLayout from "@/components/layouts/PageLayout";
 import LoginForm from "@/components/pageSpecific/loginPage/LoginForm";
 import Head from "next/head";
 
-type Props = {};
-
-const LoginPage: NextPage = (props: Props) => {
+const LoginPage: NextPage = () => {
   return (
     <PageLayout>
       <Head>
